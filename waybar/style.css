@@ -1,0 +1,98 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+* {
+  font-size: 15px;
+  font-family: "CodeNewRoman Nerd Font Propo";
+}
+
+window#waybar {
+  all: unset;
+}
+
+.modules-left {
+  border-bottom-right-radius: 10px;
+}
+.modules-center {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.modules-right {
+  border-bottom-left-radius: 10px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  /* padding: 7px; */
+  /* margin-bottom: 10px; */
+  padding: 0px 10px;
+  /* border-radius: 10px; */
+  background: alpha(@background, 0.9);
+}
+
+#workspaces {
+  all: unset;
+}
+#workspaces button {
+  all: unset;
+  padding: 0px 5px;
+  transition: all 0.2s ease;
+  color: alpha(@color9, 0.4);
+}
+#workspaces button:hover {
+  color: rgb(0, 0, 0);
+  border: none;
+  transition: all 0.3s ease;
+}
+#workspaces button.active {
+  color: @color9;
+  border: none;
+}
+#workspaces button.empty {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
+}
+#workspaces button.empty:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+  transition: all 0.3s ease;
+}
+#workspaces button.empty.active {
+  color: @color9;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+#custom-player-prev {
+  margin-right: 5px;
+}
+#custom-player-next {
+  margin-left: 5px;
+}
+
+#custom-player-prev:hover,
+#custom-ScrollMPRIS:hover,
+#custom-player-next:hover,
+#clock:hover,
+#custom-weather:hover,
+#network:hover,
+#bluetooth:hover,
+#cpu:hover,
+#memory:hover,
+#custom-pacman:hover,
+#battery:hover {
+  transition: all 0.3s ease;
+  color: @color9;
+}
+
+#battery.charging {
+  color: #26a65b;
+}
+#battery.discharging.warning {
+  color: #ffbe61;
+}
+#battery.discharging.critical {
+  color: #f53c3c;
+}

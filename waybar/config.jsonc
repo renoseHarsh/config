@@ -1,0 +1,138 @@
+{
+  "height": 30,
+  "reload_style_on_change": true,
+  // "position": "bottom",
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/space",
+    "custom/player-prev",
+    "custom/ScrollMPRIS",
+    "custom/player-next"
+  ],
+
+  "custom/space": {
+    "format": " | ",
+    "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "empty": ""
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  },
+  "custom/player-prev": {
+    "format": "",
+    "on-click": "playerctl previous",
+    "tooltip": false
+  },
+  "custom/ScrollMPRIS": {
+    "return-type": "json",
+    "exec": "~/.config/hypr/UserScripts/ScrollMPRIS -s 50 -w 30 --scroll wrapping",
+    "escape": true,
+    "min-length": 32,
+    "max-length": 32,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctld shift"
+  },
+  "custom/player-next": {
+    "format": "",
+    "on-click": "playerctl next",
+    "tooltip": false
+  },
+
+  "modules-center": [
+    "clock",
+    "custom/space",
+    "clock#time",
+    "custom/space",
+    "custom/weather"
+  ],
+  "clock": {
+    "format": "{:%a %d %b}",
+    "interval": 3600,
+    "tooltip": false
+  },
+  "clock#time": {
+    "format": "{:%H:%M:%S}",
+    "interval": 1,
+    "tooltip": false
+  },
+  "custom/weather": {
+    "format": "{}",
+    "interval": 600,
+    "exec": "~/.config/hypr/UserScripts/get-weather.sh"
+  },
+
+  "modules-right": [
+    "network",
+    "custom/space",
+    "bluetooth",
+    "custom/space",
+    "cpu",
+    "custom/space",
+    "memory",
+    "custom/space",
+    "battery",
+    "custom/space",
+    "custom/pacman",
+    "custom/space",
+    "tray"
+  ],
+  "network": {
+    "interval": 5,
+    "format-wifi": "{icon} {bandwidthDownBits}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "",
+    "format-disconnected": "",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "on-click": "kitty nmtui"
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "format-on": "󰂯",
+    "format-off": "BT-off",
+    "format-disabled": "󰂲",
+    "format-connected-battery": "{device_battery_percentage}% 󰂯",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click": "blueman-manager"
+  },
+  "cpu": {
+    "format": "󰻠 {usage}%"
+  },
+  "memory": {
+    "format": " {}%"
+  },
+  "battery": {
+    "interval": 1,
+    "format": "{icon} {capacity}%",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format-charging": "󰂄 {capacity}%",
+    "format-icons": ["󰁻", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"]
+  },
+  "custom/pacman": {
+    "format": "󰮯 {}",
+    "interval": 600,
+    "exec": "checkupdates | wc -l",
+    "exec-if": "exit 0",
+    "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+    "signal": 8,
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  }
+}
